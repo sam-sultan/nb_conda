@@ -36,7 +36,7 @@ JSONISH_RE = r'(^\s*["\{\}\[\],\d])|(["\}\}\[\],\d]\s*$)'
 
 # these are the types of environments that can be created
 package_map = {
-    'python2': 'python=2 ipykernel',
+#    'python2': 'python=2 ipykernel',
     'python3': 'python=3 ipykernel',
     'r':       'r-base r-essentials',
 }
@@ -82,7 +82,7 @@ class EnvManager(LoggingConfigurable):
 
         return {
             "environments": [root_env] + [get_info(env)
-                                          for env in info['envs']]
+                                          for env in info['envs'] if env != info['root_prefix']]
         }
 
     def delete_env(self, env):

@@ -208,7 +208,7 @@ class CondaSearcher(object):
             # Spawn subprocess to get the data
             self.log.debug('Starting conda process')
             self.conda_temp = TemporaryFile(mode='w+')
-            cmdline = 'conda search --json'.split()
+            cmdline = 'conda search --override-channels -c pandas --json'.split() #'conda search --json'.split()
             self.conda_process = Popen(cmdline, stdout=self.conda_temp,
                                        bufsize=4096)
             self.log.debug('Started: pid %s', self.conda_process.pid)
