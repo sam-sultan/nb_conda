@@ -38,7 +38,7 @@ JSONISH_RE = r'(^\s*["\{\}\[\],\d])|(["\}\}\[\],\d]\s*$)'
 package_map = {
 #    'python2': 'python=2 ipykernel',
     'python3': 'python=3 ipykernel',
-    'r':       'r-base r-essentials',
+#    'r':       'r-base r-essentials',
 }
 
 
