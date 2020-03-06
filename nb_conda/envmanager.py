@@ -117,7 +117,7 @@ class EnvManager(LoggingConfigurable):
 
     def create_env(self, env, type):
         packages = package_map[type]
-        output = self._execute('conda create -y -q --json -n', env, "ipykernel",
+        output = self._execute('conda create -y -q --json -n', env,
                                *packages.split(" "))
         return self.clean_conda_json(output)
 
