@@ -67,6 +67,8 @@ class EnvManager(LoggingConfigurable):
         info = self.clean_conda_json(self._execute('conda info --json'))
         default_env = info['default_prefix']
 
+        self.log.error('Logging out:\n%s', info)
+
         root_env = {
                 'name': 'root',
                 'dir': info['root_prefix'],
@@ -81,8 +83,7 @@ class EnvManager(LoggingConfigurable):
             }
 
         return {
-            "environments": [root_env] + [get_info(env)
-                                          for env in info['envs'] if env != info['root_prefix']]
+            "environments": [root_env] + [get_info(env) for env in info['envs'] ]
         }
 
     def delete_env(self, env):
