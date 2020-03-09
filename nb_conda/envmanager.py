@@ -92,7 +92,7 @@ class EnvManager(LoggingConfigurable):
 
     def clean_conda_json(self, output):
         lines = output.splitlines()
-
+        self.log.warn("BLAH BLAH \n%s", output)
         try:
             return json.loads('\n'.join(lines))
         except Exception as err:
