@@ -91,18 +91,17 @@ class EnvManager(LoggingConfigurable):
         return self.clean_conda_json(output)
 
     def clean_conda_json(self, output):
-        lines = output.splitlines()
-        self.log.warn("BLAH BLAH \n%s", output)
+        lines = str(output) #output.splitlines()
         try:
-            return json.loads('\n'.join(lines))
+            return json.loads(lines)
         except Exception as err:
             self.log.warn('[nb_conda] JSON parse fail:\n%s', err)
 
         # try to remove bad lines
-        lines = [line for line in lines if re.match(JSONISH_RE)]
+        #lines = [line for line in lines if re.match(JSONISH_RE)]
 
         try:
-            return json.loads('\n'.join(lines))
+            return json.loads(lines)
         except Exception as err:
             self.log.error('[nb_conda] JSON clean/parse fail:\n%s', err)
 
