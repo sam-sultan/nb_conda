@@ -87,6 +87,7 @@ class EnvActionHandler(EnvBaseHandler):
 
         if action == 'delete':
             data = self.env_manager.delete_env(env)
+            data = {"success" : True}
         elif action == 'clone':
             name = self.get_argument('name', default=None)
             if not name:
