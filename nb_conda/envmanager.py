@@ -91,7 +91,8 @@ class EnvManager(LoggingConfigurable):
         return self.clean_conda_json(output)
 
     def clean_conda_json(self, output):
-        lines = str(output) #output.splitlines()
+        self.log.warn("BLAH BLAH%s\n%s", type(output), output)
+        lines = output.splitlines()
         try:
             return json.loads(lines)
         except Exception as err:
